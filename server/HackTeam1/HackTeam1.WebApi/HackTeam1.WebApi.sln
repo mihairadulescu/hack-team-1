@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HackTeam1.Entities", "HackTeam1.Entities\HackTeam1.Entities.csproj", "{3833FA6A-B6F9-4AA5-AFFD-C486D78AFF59}"
 EndProject
@@ -10,6 +10,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HackTeam1.OcrSystem", "HackTeam1.OcrSystem\HackTeam1.OcrSystem.csproj", "{FFC40BA8-FA12-40E9-B0EB-A5372DC1148E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HackTeam1.WebApi", "HackTeam1.WebApi\HackTeam1.WebApi.csproj", "{D4B36683-359C-4136-8A2B-421F26E94B94}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HackTeam1.ConsoleTestApp", "HackTeam1.ConsoleTestApp\HackTeam1.ConsoleTestApp.csproj", "{30B9C0AA-7B32-431D-A012-595BD8725E7D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HackTeam1.Core", "HackTeam1.Core\HackTeam1.Core.csproj", "{9440EACC-C511-4D8E-B89B-BC34552981DF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HackTeam1.SearcheEngineTests", "HackTeam1.SearcheEngineTests\HackTeam1.SearcheEngineTests.csproj", "{EDC9E04D-B662-40CD-8611-1F630DE34485}"
 EndProject
@@ -35,10 +39,6 @@ Global
 		{D4B36683-359C-4136-8A2B-421F26E94B94}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D4B36683-359C-4136-8A2B-421F26E94B94}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D4B36683-359C-4136-8A2B-421F26E94B94}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EDC9E04D-B662-40CD-8611-1F630DE34485}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EDC9E04D-B662-40CD-8611-1F630DE34485}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EDC9E04D-B662-40CD-8611-1F630DE34485}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EDC9E04D-B662-40CD-8611-1F630DE34485}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
