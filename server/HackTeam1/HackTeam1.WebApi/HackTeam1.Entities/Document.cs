@@ -4,7 +4,16 @@ namespace HackTeam1.Entities
 {
     public class Document
     {
-        public int Id { get; set; }
+        public Document()
+        {
+            Title = "";
+            MimeType = "";
+            Category = "";
+            OriginalFileName = "";
+            OcrFileName = "";
+            Text = "";
+        }
+
         public string Title { get; set; }
         public string MimeType { get; set; }
         public string Category { get; set; }
