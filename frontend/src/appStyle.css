@@ -1,0 +1,25 @@
+html, 
+body {
+    height: 100%;
+    background-color: #EEE;
+    overflow-x: hidden;
+}
+
+.pull-right{
+  float: right;
+}
+
+.pull-left{
+  float: left;
+}
+
+.myJumbotron{
+  background-color: #FFF;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  padding: 10px;
+}
+
+.cursorHand{
+    cursor: pointer;
+}
