@@ -1,4 +1,4 @@
-﻿using System.Linq;
+using System.Linq;
 using HackTeam1.Entities;
 using HackTeam1.SearchEngine;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -52,6 +52,20 @@ namespace HackTeam1.SearcheEngineTests
             Assert.AreEqual("Invoice1234", myData.Title);
         }
 
-        
+        [TestMethod]
+        public void GetDocumensByTitleTest()
+        {
+            var testEntity = new Document()
+            {
+                Category = "bla bla",
+                MimeType = "docx",
+                Title = "Invoice1234",
+                Text = "heello world",
+                OcrFileName = "C:/departe",
+            };
+
+
+
+        }
     }
 }
