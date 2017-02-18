@@ -244,6 +244,20 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HackTeam1.Entities\HackTeam1.Entities.csproj">
+      <Project>{3833fa6a-b6f9-4aa5-affd-c486d78aff59}</Project>
+      <Name>HackTeam1.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HackTeam1.OcrSystem\HackTeam1.OcrSystem.csproj">
+      <Project>{ffc40ba8-fa12-40e9-b0eb-a5372dc1148e}</Project>
+      <Name>HackTeam1.OcrSystem</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HackTeam1.SearchEngine\HackTeam1.SearchEngine.csproj">
+      <Project>{0f11908e-78cd-434b-b3a8-12866c59efa8}</Project>
+      <Name>HackTeam1.SearchEngine</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
