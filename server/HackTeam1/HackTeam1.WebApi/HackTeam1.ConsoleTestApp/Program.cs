@@ -18,8 +18,7 @@ namespace HackTeam1.ConsoleTestApp
             var documentDb = new DocumentDb();
             foreach (var doc in documentDb.GetAllDocuments())
             {
-                var ocredDoc = ocr.PerformOcr(doc);
-                Console.WriteLine(ocredDoc.Text);
+                ocr.PerformOcr(doc);
             }
 
             Console.ReadKey();

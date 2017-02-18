@@ -12,6 +12,8 @@
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -31,9 +33,42 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Emgu.CV.DebuggerVisualizers.VS2010, Version=3.1.0.2504, Culture=neutral, PublicKeyToken=7281126722ab4438, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\Emgu.CV.DebuggerVisualizers.VS2010.dll</HintPath>
+    </Reference>
+    <Reference Include="Emgu.CV.DebuggerVisualizers.VS2012, Version=3.1.0.2504, Culture=neutral, PublicKeyToken=7281126722ab4438, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\Emgu.CV.DebuggerVisualizers.VS2012.dll</HintPath>
+    </Reference>
+    <Reference Include="Emgu.CV.DebuggerVisualizers.VS2013, Version=3.1.0.2504, Culture=neutral, PublicKeyToken=7281126722ab4438, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\Emgu.CV.DebuggerVisualizers.VS2013.dll</HintPath>
+    </Reference>
+    <Reference Include="Emgu.CV.DebuggerVisualizers.VS2015, Version=3.1.0.2504, Culture=neutral, PublicKeyToken=7281126722ab4438, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\Emgu.CV.DebuggerVisualizers.VS2015.dll</HintPath>
+    </Reference>
+    <Reference Include="Emgu.CV.DebuggerVisualizers.VS2017, Version=3.1.0.2504, Culture=neutral, PublicKeyToken=7281126722ab4438, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\Emgu.CV.DebuggerVisualizers.VS2017.dll</HintPath>
+    </Reference>
+    <Reference Include="Emgu.CV.UI, Version=3.1.0.2504, Culture=neutral, PublicKeyToken=7281126722ab4438, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\Emgu.CV.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Emgu.CV.UI.GL, Version=3.1.0.2504, Culture=neutral, PublicKeyToken=7281126722ab4438, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\Emgu.CV.UI.GL.dll</HintPath>
+    </Reference>
+    <Reference Include="Emgu.CV.World, Version=3.1.0.2504, Culture=neutral, PublicKeyToken=7281126722ab4438, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\Emgu.CV.World.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -61,17 +96,52 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="lib\Emgu.CV.DebuggerVisualizers.VS2010.dll" />
+    <Content Include="lib\Emgu.CV.DebuggerVisualizers.VS2012.dll" />
+    <Content Include="lib\Emgu.CV.DebuggerVisualizers.VS2013.dll" />
+    <Content Include="lib\Emgu.CV.DebuggerVisualizers.VS2015.dll" />
+    <Content Include="lib\Emgu.CV.DebuggerVisualizers.VS2017.dll" />
+    <Content Include="lib\Emgu.CV.UI.dll" />
+    <Content Include="lib\Emgu.CV.UI.GL.dll" />
+    <Content Include="lib\Emgu.CV.UI.GL.xml" />
+    <Content Include="lib\Emgu.CV.UI.xml" />
+    <Content Include="lib\Emgu.CV.World.dll" />
+    <Content Include="lib\Emgu.CV.World.xml" />
+    <Content Include="x64\cvextern.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="x64\liblept172.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="x64\libtesseract304.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="x64\msvcp140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="x64\opencv_ffmpeg310_64.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="x64\vcruntime140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="x86\cvextern.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="x86\liblept172.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="x86\libtesseract304.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="x86\msvcp140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="x86\opencv_ffmpeg310.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="x86\vcruntime140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <ItemGroup>

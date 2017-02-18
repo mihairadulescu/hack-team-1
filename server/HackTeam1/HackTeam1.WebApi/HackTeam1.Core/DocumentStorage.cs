@@ -20,8 +20,17 @@ namespace HackTeam1.Core
 
         public static void SaveFile(string fileName, byte[] content)
         {
-            var fileContents = Encoding.UTF8.GetString(content);
-            SaveFile(fileName, fileContents);
+            var filePath = GetFilePath(fileName);
+            File.WriteAllBytes(filePath, content);
+        }
+
+        public static void RemoveFile(string fileName)
+        {
+            var filePath = GetFilePath(fileName);
+            if (File.Exists(filePath))
+            {
+                File.Delete(filePath);
+            }
         }
     }
 }
