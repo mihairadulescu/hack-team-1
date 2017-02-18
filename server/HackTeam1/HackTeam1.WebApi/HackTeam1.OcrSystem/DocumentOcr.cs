@@ -1,6 +1,4 @@
 ﻿using System;
-using System.CodeDom;
-using System.Diagnostics;
 using System.IO;
 using System.Threading.Tasks;
 using HackTeam1.Core;
@@ -19,11 +17,9 @@ namespace HackTeam1.OcrSystem
 
         public Document PerformOcr(Document document)
         {
-            var fileName = document.OriginalFileName;
-            Console.WriteLine("Performing OCR on {0}", fileName);
-
-            var roTask = ExtractTextFromImage(ROMANIAN, fileName);
-            var engTask = ExtractTextFromImage(ENGLISH, fileName);
+            Console.WriteLine("Performing OCR on {0}", document.OriginalFileName);
+            var roTask = ExtractTextFromImage(ROMANIAN, document.OriginalFileName);
+            var engTask = ExtractTextFromImage(ENGLISH, document.OriginalFileName);
             Task.WaitAll(roTask, engTask);
 
             var romanianResult = roTask.Result;
@@ -32,17 +28,21 @@ namespace HackTeam1.OcrSystem
             Console.WriteLine("ENG confidence: {0}", englishResult.Confidence);
 
             SetDocumentText(document, romanianResult, englishResult);
-            SaveTextToStorage(document);
+            SuggestTitle(document);
+            SuggestCategory(document);
 
             return document;
         }
 
-        private static void SaveTextToStorage(Document document)
+        private static void SuggestCategory(Document document)
         {
-            var ocrFileName = Path.GetFileNameWithoutExtension(document.OriginalFileName) + ".txt";
-            document.OcrFileName = ocrFileName;
+            var suggestions = new CategorySuggestions();
+            document.Category = "* " + suggestions.SuggestCategory(document) + " *";
+        }
 
-            DocumentStorage.SaveFile(ocrFileName, document.Text);
+        private static void SuggestTitle(Document document)
+        {
+            document.Title = "* " + Path.GetFileNameWithoutExtension(document.OriginalFileName) + " *";
         }
 
         private static void SetDocumentText(Document document, ExtractionResult romanianResult, ExtractionResult englishResult)

@@ -207,6 +207,9 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\TestApiController.cs" />
+    <Compile Include="DocumentManagement\DocumentManagementSystem.cs" />
+    <Compile Include="DocumentManagement\IDocumentManagementSystem.cs" />
+    <Compile Include="DocumentManagement\MimeTypeProvider.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -245,6 +248,10 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\HackTeam1.Core\HackTeam1.Core.csproj">
+      <Project>{9440EACC-C511-4D8E-B89B-BC34552981DF}</Project>
+      <Name>HackTeam1.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\HackTeam1.Entities\HackTeam1.Entities.csproj">
       <Project>{3833fa6a-b6f9-4aa5-affd-c486d78aff59}</Project>
       <Name>HackTeam1.Entities</Name>
