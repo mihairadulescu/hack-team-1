@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,13 +14,21 @@ namespace HackTeam1.ConsoleTestApp
     {
         static void Main(string[] args)
         {
+            SeedDb();
+
             IDocumentOcr ocr = new DocumentOcr();
 
+            var stopWatch = new Stopwatch();
+            stopWatch.Start();
             var documentDb = new DocumentDb();
             foreach (var doc in documentDb.GetAllDocuments())
             {
                 ocr.PerformOcr(doc);
             }
+
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine("Total time elapsed: {0}", stopWatch.Elapsed.ToString("g"));
 
             Console.ReadKey();
         }
