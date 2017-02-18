@@ -1,7 +1,9 @@
 ﻿using System;
+using Nest;
 
 namespace HackTeam1.Entities
 {
+    [ElasticsearchType(IdProperty = "OriginalFileName")]
     public class Document
     {
         public Document()

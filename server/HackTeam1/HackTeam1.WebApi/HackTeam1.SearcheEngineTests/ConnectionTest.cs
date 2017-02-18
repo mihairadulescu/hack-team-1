@@ -8,6 +8,15 @@ namespace HackTeam1.SearcheEngineTests
     [TestClass]
     public class ConnectionTest
     {
+        private ElasticConnector elastic;
+
+        [TestInitialize]
+        public void Initilize()
+        {
+            elastic = new ElasticConnector();
+            //elastic.DeleteIndex("document");
+        }
+
         [TestMethod]
         public void TestConnection()
         {
@@ -21,11 +30,10 @@ namespace HackTeam1.SearcheEngineTests
                 OcrFileName = "C:/departe",
             };
 
-            var elastic = new ElasticConnector();
 
             elastic.Index(testEntity);
 
-            var myData=  elastic.GetData();
+            var myData = elastic.GetData();
 
             Assert.AreEqual("bla bla", myData.Category);
         }
@@ -43,7 +51,7 @@ namespace HackTeam1.SearcheEngineTests
             };
 
 
-            var elastic = new ElasticConnector();
+
 
             elastic.Index(testEntity);
 
@@ -57,15 +65,18 @@ namespace HackTeam1.SearcheEngineTests
         {
             var testEntity = new Document()
             {
-                Category = "bla bla",
+                Category = "MyCategory",
                 MimeType = "docx",
-                Title = "Invoice1234",
+                Title = "qazwsxedc",
                 Text = "heello world",
                 OcrFileName = "C:/departe",
             };
 
+            elastic.Index(testEntity);
 
+            var myData = elastic.SearchByTitle("qazwsxedc");
 
+            Assert.AreEqual("My Category", myData.First().Category);
         }
     }
 }

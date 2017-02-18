@@ -14,7 +14,7 @@ namespace HackTeam1.SearchEngine
             var node = new Uri("http://localhost:9200");
             var settings = new ConnectionSettings(node);
             _client = new ElasticClient(settings);
-          
+         
         }
 
         public void Index(Document document)
@@ -23,10 +23,18 @@ namespace HackTeam1.SearchEngine
             _client.Index(document, idx => idx.Index("document"));
         }
 
+        public void DeleteIndex(string indexName)
+        {
+            _client.DeleteIndex(indexName);
+        }
+
 
         public Document GetData()
         {
-            return _client.Get<Document>(1, idx => idx.Index("document")).Source;
+            var aa =
+                _client.Get<Document>(1, idx => idx.Index("document"));
+
+            return aa.Source;
         }
 
         public IEnumerable<Document> SearchByTitle(string title)
@@ -38,7 +46,10 @@ namespace HackTeam1.SearchEngine
                 Query = new TermQuery {Field = "title", Value = title}
             };
 
-            return _client.Search<Document>(request).Documents;
+            var response = _client.Search<Document>(request);
+
+            return response.Documents;
+
         }
     }
 }
