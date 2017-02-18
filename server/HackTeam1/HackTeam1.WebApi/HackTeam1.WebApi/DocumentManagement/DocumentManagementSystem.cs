@@ -1,7 +1,8 @@
 using System;
+using HackTeam1.Core;
 using HackTeam1.Entities;
 
-namespace HackTeam1.Core
+namespace HackTeam1.WebApi.DocumentManagement
 {
     public class DocumentManagementSystem : IDocumentManagementSystem
     {

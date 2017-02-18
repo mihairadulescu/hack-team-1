@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 
-namespace HackTeam1.Core
+namespace HackTeam1.WebApi.DocumentManagement
 {
     public class MimeTypeProvider
     {

@@ -1,6 +1,6 @@
 ﻿using HackTeam1.Entities;
 
-namespace HackTeam1.Core
+namespace HackTeam1.WebApi.DocumentManagement
 {
     public interface IDocumentManagementSystem
     {
