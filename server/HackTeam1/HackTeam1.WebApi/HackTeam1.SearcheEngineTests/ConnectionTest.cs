@@ -1,4 +1,4 @@
-﻿using System.Linq;
+using System.Linq;
 using HackTeam1.Entities;
 using HackTeam1.SearchEngine;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
