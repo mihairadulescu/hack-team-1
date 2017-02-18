@@ -52,6 +52,20 @@ namespace HackTeam1.SearcheEngineTests
             Assert.AreEqual("Invoice1234", myData.Title);
         }
 
-        
+        [TestMethod]
+        public void GetDocumensByTitleTest()
+        {
+            var testEntity = new Document()
+            {
+                Category = "bla bla",
+                MimeType = "docx",
+                Title = "Invoice1234",
+                Text = "heello world",
+                OcrFileName = "C:/departe",
+            };
+
+
+
+        }
     }
 }
