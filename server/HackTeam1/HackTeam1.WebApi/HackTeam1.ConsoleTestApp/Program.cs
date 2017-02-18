@@ -15,7 +15,14 @@ namespace HackTeam1.ConsoleTestApp
         {
             IDocumentOcr ocr = new DocumentOcr();
 
-            
+            var documentDb = new DocumentDb();
+            foreach (var doc in documentDb.GetAllDocuments())
+            {
+                var ocredDoc = ocr.PerformOcr(doc);
+                Console.WriteLine(ocredDoc.Text);
+            }
+
+            Console.ReadKey();
         }
 
         private static void SeedDb()
@@ -23,22 +30,22 @@ namespace HackTeam1.ConsoleTestApp
             var documentDb = new DocumentDb();
             documentDb.SaveDocument(new Document
             {
-                OriginalFileName = "first.pdf",
+                OriginalFileName = "58a83a614bdca.tiff",
                 CreatedDate = DateTime.Now
             });
             documentDb.SaveDocument(new Document
             {
-                OriginalFileName = "second.pdf",
+                OriginalFileName = "AVS51095.tiff",
                 CreatedDate = DateTime.Now
             });
             documentDb.SaveDocument(new Document
             {
-                OriginalFileName = "third.pdf",
+                OriginalFileName = "InvoiceStay_LA.tiff",
                 CreatedDate = DateTime.Now
             });
             documentDb.SaveDocument(new Document
             {
-                OriginalFileName = "fourth.pdf",
+                OriginalFileName = "InvoiceStay_NY.tiff",
                 CreatedDate = DateTime.Now
             });
         }
