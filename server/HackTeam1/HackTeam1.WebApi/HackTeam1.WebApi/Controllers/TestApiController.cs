@@ -6,8 +6,8 @@ namespace HackTeam1.WebApi.Controllers
     {
         public IHttpActionResult Get()
         {
-            return this.Ok("hello world");
+            return this.Ok("Hello World");
         }
-    
+
     }
 }

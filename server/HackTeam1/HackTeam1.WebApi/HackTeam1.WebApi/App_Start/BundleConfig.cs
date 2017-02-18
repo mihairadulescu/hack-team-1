@@ -5,7 +5,6 @@ namespace HackTeam1.WebApi
 {
     public class BundleConfig
     {
-       
-     
+      
     }
 }
