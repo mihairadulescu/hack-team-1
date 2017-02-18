@@ -35,7 +35,10 @@ namespace HackTeam1.Core
                 CreatedDate = DateTime.Now
             };
 
-            return SaveDocument(document);
+            SaveDocument(document);
+
+            var ocr = new OcrSystem.DocumentOcr();
+            return ocr.PerformOcr(document);
         }
 
         private static Document SaveDocument(Document document)

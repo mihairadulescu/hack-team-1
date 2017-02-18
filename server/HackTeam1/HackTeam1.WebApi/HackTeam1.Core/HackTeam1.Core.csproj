@@ -47,10 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DocumentDb.cs" />
-    <Compile Include="DocumentManagementSystem.cs" />
     <Compile Include="DocumentStorage.cs" />
-    <Compile Include="IDocumentManagementSystem.cs" />
-    <Compile Include="MimeTypeProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
