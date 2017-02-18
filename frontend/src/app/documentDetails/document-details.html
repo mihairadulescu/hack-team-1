@@ -1,0 +1,72 @@
+<br />
+<br />
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="col-md-12">
+            <div>
+                <div class="col-md-6">
+                    <h3 style="width: 50%">Document details</h3>
+</div>
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="col-md-12">
+            <div class="myJumbotron">
+                <h5>{{currentDocument?.Title}}</h5>
+                <h5>Created in {{currentDocument?.CreatedDate}}</h5>
+                <h5>Category: {{currentDocument?.Category}}</h5>
+                <h5>Size: 1.2MB</h5>
+                <h5>Physical location: Archive</h5>
+                <br />
+                <h5><button class="btn btn-success btn-sm">This document is valid until 18 Feb. 2018</button></h5>
+                <h5>
+                    <button class="btn btn-info btn-sm">Invoice</button>
+                    <button class="btn btn-info btn-sm">NERDSCOMPUTING SRL</button>
+                    <button class="btn btn-info btn-sm">Laptop</button>
+                </h5>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="col-md-12">
+            <div>
+                <div class="col-md-6">
+                    <h3 style="width: 50%">Content</h3>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="myJumbotron">
+
+            <h5>
+                <button (click)="selectDocumentTextTab()" class="btn btn-success btn-sm">Text tab</button>
+                <button (click)="selectDocumentImageTab()" class="btn btn-success btn-sm">Original image</button>
+            </h5>
+
+            <br />
+            <br />
+
+
+            <div *ngIf='selectedTab === "documentText"'>
+                <textarea rows="20" class="form-control transition-height" autosize>{{text}}</textarea>
+                <br />
+                <button (click)="saveDocumentChanges()" class="btn btn-success pull-right">Save</button>
+                <br />
+                <br />
+            </div>
+
+
+            <div *ngIf='selectedTab === "documentImage"'>
+                <img style="border: 1px solid #CACACA; margin: 0 auto; display: block;" src="http://nerdscomputing.com/wp-content/uploads/2016/12/laptop_png8913.jpg">
+</div>
+
+
+</div>
+</div>
+</div>

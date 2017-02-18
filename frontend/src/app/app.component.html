@@ -1,0 +1,26 @@
+<div id="sidebar-wrapper">
+  <ul class="sidebar-nav">
+    <br />
+    <p class="sidebar-title">Amazing app :)</p>
+    <br />
+    <br />
+    <br />
+    <br />
+    <p class="sidebar-menu-title">Menu</p>
+    <li>
+      <a [routerLink]="['/search']">Search</a>
+    </li>
+    <li>
+      <a [routerLink]="['/upload']">Upload</a>
+    </li>
+  </ul>
+
+  <div class="sidebar-footer">
+    @HackNerds 2017
+  </div>
+</div>
+
+
+<main class="sample-app-content">
+	<router-outlet></router-outlet>
+</main>

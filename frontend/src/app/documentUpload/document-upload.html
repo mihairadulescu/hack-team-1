@@ -1,0 +1,23 @@
+<div>
+    <br />
+    <br />
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="col-md-12">
+                <div>
+                    <div class="col-md-6">
+                        <h3 style="width: 50%">Upload document</h3>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="col-md-12">
+            <dropzone name="dropzone" [message]="'Click or drag images here to upload'" (error)="onUploadError($event)" (success)="onUploadSuccess($event)"></dropzone>
+        </div>
+    </div>
+</div>
