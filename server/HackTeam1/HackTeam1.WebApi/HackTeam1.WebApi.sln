@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HackTeam1.OcrSystem", "Hack
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HackTeam1.WebApi", "HackTeam1.WebApi\HackTeam1.WebApi.csproj", "{D4B36683-359C-4136-8A2B-421F26E94B94}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HackTeam1.SearcheEngineTests", "HackTeam1.SearcheEngineTests\HackTeam1.SearcheEngineTests.csproj", "{EDC9E04D-B662-40CD-8611-1F630DE34485}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{D4B36683-359C-4136-8A2B-421F26E94B94}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D4B36683-359C-4136-8A2B-421F26E94B94}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D4B36683-359C-4136-8A2B-421F26E94B94}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EDC9E04D-B662-40CD-8611-1F630DE34485}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EDC9E04D-B662-40CD-8611-1F630DE34485}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EDC9E04D-B662-40CD-8611-1F630DE34485}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EDC9E04D-B662-40CD-8611-1F630DE34485}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
