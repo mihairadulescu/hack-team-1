@@ -28,5 +28,17 @@ namespace HackTeam1.SearchEngine
         {
             return _client.Get<Document>(1, idx => idx.Index("document")).Source;
         }
+
+        public IEnumerable<Document> SearchByTitle(string title)
+        {
+            var request = new SearchRequest
+            {
+                From = 0,
+                Size = 10,
+                Query = new TermQuery {Field = "title", Value = title}
+            };
+
+            return _client.Search<Document>(request).Documents;
+        }
     }
 }

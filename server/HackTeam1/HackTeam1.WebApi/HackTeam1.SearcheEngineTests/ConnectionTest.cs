@@ -14,7 +14,6 @@ namespace HackTeam1.SearcheEngineTests
 
             var testEntity = new Document()
             {
-                Id = 1,
                 Category = "bla bla",
                 MimeType = "docx",
                 Title = "Invoiceee",
@@ -36,7 +35,6 @@ namespace HackTeam1.SearcheEngineTests
         {
             var testEntity = new Document()
             {
-                Id = 1,
                 Category = "bla bla",
                 MimeType = "docx",
                 Title = "Invoice1234",
