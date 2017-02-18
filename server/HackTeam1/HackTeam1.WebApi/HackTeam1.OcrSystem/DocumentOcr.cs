@@ -1,14 +1,6 @@
 ﻿using System;
-using System.CodeDom;
-using System.Diagnostics;
-using System.Drawing;
-using System.Drawing.Imaging;
 using System.IO;
 using System.Threading.Tasks;
-using Emgu.CV;
-using Emgu.CV.Aruco;
-using Emgu.CV.CvEnum;
-using Emgu.CV.Structure;
 using HackTeam1.Core;
 using HackTeam1.Entities;
 using Tesseract;

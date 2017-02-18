@@ -47,26 +47,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DocumentDb.cs" />
+    <Compile Include="DocumentManagementSystem.cs" />
     <Compile Include="DocumentStorage.cs" />
+    <Compile Include="IDocumentManagementSystem.cs" />
+    <Compile Include="MimeTypeProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="storage\58a83a614bdca.tiff">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="storage\AVS51095.tiff">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="storage\database.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="storage\InvoiceStay_LA.tiff">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="storage\InvoiceStay_NY.tiff">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
