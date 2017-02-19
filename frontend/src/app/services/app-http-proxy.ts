@@ -27,6 +27,7 @@ export class AppHttpProxy {
 
 
     searchDocument(searchPhrase) {
+        searchPhrase = encodeURI(searchPhrase);
         var completeUrl = this.DOCUMENT_SEARCH;
         completeUrl = completeUrl.replace("{searchPhrase}", searchPhrase);
         return this.http.get(completeUrl, { headers: this.contentHeader }).map(res => res.json());
