@@ -40,7 +40,8 @@
                     <h4>{{item.Title}}</h4>
                     <div style="color: #AAAAAA; font-size: 0.9em;">{{item.Category}}, {{item.CreatedDate}}</div>
                     <br />
-                    <h5>{{item.Text}}</h5>
+                    <h5 [innerHTML]="item.HighlightedText"></h5>
+                    <!--<h5>{{item.Text}}</h5>-->
                     <h5><a (click)="navigateToDocumentDetailsPage(item)" class="details-button cursorHand">See more details</a></h5>
                 </div>
             </div>

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { RouterModule, Routes, Router } from '@angular/router';
 import { AppHttpProxy } from '../services/app-http-proxy'
 import { MomentModule } from 'angular2-moment'
@@ -8,6 +8,7 @@ import { MomentModule } from 'angular2-moment'
   templateUrl: './document-search.html',
   styleUrls: ['./document-search.css'],
   providers: [AppHttpProxy],
+  encapsulation: ViewEncapsulation.None,
 })
 
 export class DocumentSearchPage {
@@ -22,11 +23,35 @@ export class DocumentSearchPage {
     });
   }
 
+
+
+
+
+  updateHighlight(item, searchText) {
+
+    if (searchText != undefined && searchText != "") {
+      item.HighlightedText = item.Text.replace(new RegExp('(' + searchText + ')', 'ig'),
+        '<span class=highlightedContent2>$1</span>');
+    }
+    else {
+      item.HighlightedText = item.Text;
+    }
+
+    return item;
+  }
+
+
   onSearch($event) {
+
     this.appHttpProxy.searchDocument($event).subscribe(result => {
+
+      result.forEach(item => {
+        item.CreatedDate = this.formatDate(item.CreatedDate);
+        item = this.updateHighlight(item, $event);
+      });
+
       this.foundDocuments = result;
-      this.foundDocuments.forEach(item => { item.CreatedDate = this.formatDate(item.CreatedDate); });
-      console.log(result);
+
     });
   }
 
@@ -39,7 +64,7 @@ export class DocumentSearchPage {
   }
 
 
-  formatDate(inputDate){
+  formatDate(inputDate) {
     return inputDate;
   }
 }

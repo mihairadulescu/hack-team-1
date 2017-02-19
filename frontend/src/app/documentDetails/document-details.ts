@@ -44,11 +44,9 @@ export class DocumentDetailsPage {
 
   selectDocumentImageTab() {
     this.selectedTab = "documentImage";
-    console.log(this.selectedTab);
   }
 
   selectDocumentTextTab() {
     this.selectedTab = "documentText";
-    console.log(this.selectedTab);
   }
 }
