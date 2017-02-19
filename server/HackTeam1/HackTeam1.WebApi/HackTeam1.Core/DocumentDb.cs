@@ -9,7 +9,7 @@ namespace HackTeam1.Core
 {
     public class DocumentDb
     {
-        private const string DB_PATH = "storage/database.xml";
+        private const string DB_PATH = @"D:\nerdshack\storage\database.xml";
         private static readonly object locker = new object();
 
         public List<Document> GetAllDocuments()

@@ -1,5 +1,6 @@
 ﻿using System;
 using Nest;
+using Newtonsoft.Json;
 
 namespace HackTeam1.Entities
 {
@@ -24,5 +25,8 @@ namespace HackTeam1.Entities
         public DateTime CreatedDate { get; set; }
         public DateTime IndexedDate { get; set; }
         public string Text { get; set; }
+
+        [Text(Ignore = true)]
+        public byte[] ImageContent { get; set; }
     }
 }

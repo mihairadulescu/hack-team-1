@@ -7,5 +7,6 @@ namespace HackTeam1.SearchEngine
     {
         void Index(Document document);
         IEnumerable<Document> Search(string searchPhrase);
+        Document GetBy(string fileName);
     }
 }

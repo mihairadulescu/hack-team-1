@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Elasticsearch.Net;
 using HackTeam1.Entities;
 using Nest;
 
@@ -10,10 +11,10 @@ namespace HackTeam1.SearchEngine
     {
         private readonly ElasticClient _client;
 
-        public ElasticSearchEngine()
+        public ElasticSearchEngine(string defaultIndex = "document")
         {
             var node = new Uri("http://localhost:9200");
-            var settings = new ConnectionSettings(node).DefaultIndex("document");
+            var settings = new ConnectionSettings(node).DefaultIndex(defaultIndex);
             _client = new ElasticClient(settings);
 
         }
@@ -21,7 +22,7 @@ namespace HackTeam1.SearchEngine
         public void Index(Document document)
         {
 
-            _client.Index(document);
+            _client.Index(document, z=>z.Refresh(Refresh.True));
         }
 
         public IEnumerable<Document> Search(string searchPhrase)
@@ -46,6 +47,10 @@ namespace HackTeam1.SearchEngine
             return response.OrderByDescending(z => z.Score).Select(p => p.Source);
 
         }
-       
+
+        public Document GetBy(string fileName)
+        {
+            return _client.Get<Document>(fileName).Source;
+        }
     }
 }

@@ -12,8 +12,7 @@ namespace HackTeam1.OcrSystem
         private string ROMANIAN = "ron";
         private string ENGLISH = "eng";
 
-        private const string DATA_DIR = "./tessdata";
-        private DocumentDb database = new DocumentDb();
+        private const string DATA_DIR = @"D:\nerdshack\tessdata";
 
         public Document PerformOcr(Document document)
         {
@@ -37,12 +36,12 @@ namespace HackTeam1.OcrSystem
         private static void SuggestCategory(Document document)
         {
             var suggestions = new CategorySuggestions();
-            document.Category = "* " + suggestions.SuggestCategory(document) + " *";
+            document.Category =  suggestions.SuggestCategory(document) + "_";
         }
 
         private static void SuggestTitle(Document document)
         {
-            document.Title = "* " + Path.GetFileNameWithoutExtension(document.OriginalFileName) + " *";
+            document.Title = Path.GetFileNameWithoutExtension(document.OriginalFileName) + "_";
         }
 
         private static void SetDocumentText(Document document, ExtractionResult romanianResult, ExtractionResult englishResult)

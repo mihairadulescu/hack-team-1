@@ -1,6 +1,4 @@
 ﻿using System.IO;
-using System.Reflection;
-using System.Text;
 
 namespace HackTeam1.Core
 {
@@ -8,7 +6,7 @@ namespace HackTeam1.Core
     {
         public static string GetFilePath(string fileName)
         {
-            var runningDirectory = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            var runningDirectory = @"D:\nerdsHack"; //Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             return Path.Combine(runningDirectory, "storage", fileName);
         }
 
@@ -31,6 +29,12 @@ namespace HackTeam1.Core
             {
                 File.Delete(filePath);
             }
+        }
+
+        public static byte[] GetFile(string fileName, string mimeType)
+        {
+            var filePath = GetFilePath(fileName);
+            return File.ReadAllBytes(filePath + mimeType);
         }
     }
 }
