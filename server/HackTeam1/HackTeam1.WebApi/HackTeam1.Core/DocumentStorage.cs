@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration;
 using System.IO;
 
 namespace HackTeam1.Core
@@ -7,8 +8,8 @@ namespace HackTeam1.Core
     {
         public static string GetFilePath(string fileName)
         {
-            var runningDirectory = @"D:\nerdsHack"; //Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            return Path.Combine(runningDirectory, "storage", fileName);
+            var runningDirectory = ConfigurationSettings.AppSettings["storageFolder"];
+            return Path.Combine(runningDirectory, fileName);
         }
 
         public static void SaveFile(string fileName, string contents)

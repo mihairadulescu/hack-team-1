@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration;
 using System.IO;
 using System.Threading.Tasks;
 using HackTeam1.Core;
@@ -15,7 +16,7 @@ namespace HackTeam1.OcrSystem
         private string ROMANIAN = "ron";
         private string ENGLISH = "eng";
 
-        private const string DATA_DIR = @"D:\nerdshack\tessdata";
+        private static string DATA_DIR = ConfigurationSettings.AppSettings["tessData"];
 
         public Document PerformOcr(Document document)
         {
@@ -95,7 +96,7 @@ namespace HackTeam1.OcrSystem
 
         public string ConvertTiffToPng(string fileName)
         {
-            var storagePath = @"D:\nerdshack\storage";
+            var storagePath = ConfigurationSettings.AppSettings["storageFolder"];
             var fullPath = Path.Combine(storagePath, fileName);
 
             var withoutExtension = Path.GetFileNameWithoutExtension(fileName);
