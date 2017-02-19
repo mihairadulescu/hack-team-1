@@ -1,28 +1,32 @@
 import { Component } from '@angular/core';
 import { RouterModule, Routes, Router } from '@angular/router';
 import { AppHttpProxy } from '../services/app-http-proxy'
+import { MomentModule } from 'angular2-moment'
 
 @Component({
   selector: 'documentSearch',
   templateUrl: './document-search.html',
   styleUrls: ['./document-search.css'],
-  providers: [AppHttpProxy]
+  providers: [AppHttpProxy],
 })
 
 export class DocumentSearchPage {
 
-  foundDocuments;
-  searchPhrase: string = "";
-  constructor(private router: Router, private appHttpProxy: AppHttpProxy) {
+  foundDocuments: Array<any>;
+
+  constructor(private router: Router, private appHttpProxy: AppHttpProxy, private moment: MomentModule) {
 
     this.appHttpProxy.searchDocument("doc").subscribe(result => {
       this.foundDocuments = result;
+      this.foundDocuments.forEach(item => { item.CreatedDate = this.formatDate(item.CreatedDate); });
     });
   }
 
   onSearch($event) {
     this.appHttpProxy.searchDocument($event).subscribe(result => {
-      console.log("doSearchDocument result");
+      this.foundDocuments = result;
+      this.foundDocuments.forEach(item => { item.CreatedDate = this.formatDate(item.CreatedDate); });
+      console.log(result);
     });
   }
 
@@ -31,6 +35,11 @@ export class DocumentSearchPage {
   }
 
   navigateToDocumentDetailsPage(item) {
-    this.router.navigate(['/details'], { queryParams: { fileName: item.Title } });
+    this.router.navigate(['/details'], { queryParams: { fileName: item.OriginalFileName } });
+  }
+
+
+  formatDate(inputDate){
+    return inputDate;
   }
 }

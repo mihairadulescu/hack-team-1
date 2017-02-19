@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using HackTeam1.Core;
 using HackTeam1.Entities;
 using Tesseract;
+using System.Diagnostics;
 
 namespace HackTeam1.OcrSystem
 {
@@ -16,6 +17,10 @@ namespace HackTeam1.OcrSystem
 
         public Document PerformOcr(Document document)
         {
+            var stopWatch = new System.Diagnostics.Stopwatch();
+            stopWatch.Start();
+
+            Console.WriteLine();
             Console.WriteLine("Performing OCR on {0}", document.OriginalFileName);
             var roTask = ExtractTextFromImage(ROMANIAN, document.OriginalFileName);
             var engTask = ExtractTextFromImage(ENGLISH, document.OriginalFileName);
@@ -30,6 +35,7 @@ namespace HackTeam1.OcrSystem
             SuggestTitle(document);
             SuggestCategory(document);
 
+            Console.WriteLine("Time elapsed: {0}", stopWatch.Elapsed.ToString("g"));
             return document;
         }
 
