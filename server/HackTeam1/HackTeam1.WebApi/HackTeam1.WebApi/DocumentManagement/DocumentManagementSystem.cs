@@ -24,18 +24,16 @@ namespace HackTeam1.WebApi.DocumentManagement
 
             var document = new Document
             {
-                OriginalFileName = fileName,
+                OriginalFileName = Path.GetFileNameWithoutExtension(fileName),
                 MimeType = mimeType,
+                Extension = Path.GetExtension(fileName),
                 CreatedDate = DateTime.Now,
                 IndexedDate = DateTime.Now
             };
 
             var ocr = new OcrSystem.DocumentOcr();
             var ocrizedDocument = ocr.PerformOcr(document);
-
-            //Don't try this at home
-            ocrizedDocument.OriginalFileName = Path.GetFileNameWithoutExtension(ocrizedDocument.OriginalFileName);
-
+            
             ElasticSearchEngine.Index(ocrizedDocument);
 
             return ocrizedDocument;
@@ -51,7 +49,7 @@ namespace HackTeam1.WebApi.DocumentManagement
         public Document GetWithDetails(string fileName)
         {
             var document = this.ElasticSearchEngine.GetBy(fileName);
-            document.ImageContent = DocumentStorage.GetFile(fileName, document.MimeType);
+            document.ImageContent = DocumentStorage.GetBase64File(fileName, document.Extension);
 
             return document;
         }

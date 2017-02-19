@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 
 namespace HackTeam1.Core
 {
@@ -31,10 +32,11 @@ namespace HackTeam1.Core
             }
         }
 
-        public static byte[] GetFile(string fileName, string mimeType)
+        public static string GetBase64File(string fileName, string extension)
         {
             var filePath = GetFilePath(fileName);
-            return File.ReadAllBytes(filePath + mimeType);
+            var aa = File.ReadAllBytes(filePath + extension);
+            return "data:image/png;base64," + Convert.ToBase64String(aa);
         }
     }
 }

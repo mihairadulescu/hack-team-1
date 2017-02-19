@@ -70,8 +70,6 @@ namespace HackTeam1.WebApi.Controllers
 
                     throw;
                 }
-
-
             }
 
             return Ok();
