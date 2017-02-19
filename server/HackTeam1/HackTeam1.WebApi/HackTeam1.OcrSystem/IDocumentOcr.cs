@@ -5,5 +5,6 @@ namespace HackTeam1.OcrSystem
     public interface IDocumentOcr
     {
         Document PerformOcr(Document document);
+        string ConvertTiffToPng(string fileName);
     }
 }

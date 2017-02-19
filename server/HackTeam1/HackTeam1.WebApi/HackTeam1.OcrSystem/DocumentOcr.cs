@@ -4,7 +4,9 @@ using System.Threading.Tasks;
 using HackTeam1.Core;
 using HackTeam1.Entities;
 using Tesseract;
-using System.Diagnostics;
+using System.Drawing;
+using System.Drawing.Imaging;
+using ImageFormat = System.Drawing.Imaging.ImageFormat;
 
 namespace HackTeam1.OcrSystem
 {
@@ -89,6 +91,19 @@ namespace HackTeam1.OcrSystem
         {
             public string Text { get; set; }
             public double Confidence { get; set; }
+        }
+
+        public string ConvertTiffToPng(string fileName)
+        {
+            var storagePath = @"D:\nerdshack\storage";
+            var fullPath = Path.Combine(storagePath, fileName);
+
+            var withoutExtension = Path.GetFileNameWithoutExtension(fileName);
+            var pngPath = Path.Combine(storagePath, withoutExtension + ".png");
+
+            Image.FromFile(fullPath).Save(pngPath, ImageFormat.Png);
+
+            return pngPath;
         }
     }
 }

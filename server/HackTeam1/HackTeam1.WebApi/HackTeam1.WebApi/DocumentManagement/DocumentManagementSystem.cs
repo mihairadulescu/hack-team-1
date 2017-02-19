@@ -1,5 +1,6 @@
 using System;
 using System.IO;
+using System.Linq;
 using HackTeam1.Core;
 using HackTeam1.Entities;
 using HackTeam1.SearchEngine;
@@ -33,7 +34,7 @@ namespace HackTeam1.WebApi.DocumentManagement
 
             var ocr = new OcrSystem.DocumentOcr();
             var ocrizedDocument = ocr.PerformOcr(document);
-            
+
             ElasticSearchEngine.Index(ocrizedDocument);
 
             return ocrizedDocument;
@@ -49,7 +50,17 @@ namespace HackTeam1.WebApi.DocumentManagement
         public Document GetWithDetails(string fileName)
         {
             var document = this.ElasticSearchEngine.GetBy(fileName);
-            document.ImageContent = DocumentStorage.GetBase64File(fileName, document.Extension);
+
+            if (document.MimeType == "image/tiff")
+            {
+                var ocr = new OcrSystem.DocumentOcr();
+                var imagePath = ocr.ConvertTiffToPng(document.OriginalFileName + document.Extension);
+                document.ImageContent = DocumentStorage.GetBase64File(imagePath);
+            }
+            else
+            {
+                document.ImageContent = DocumentStorage.GetBase64File(fileName, document.Extension);
+            }
 
             return document;
         }
@@ -58,6 +69,5 @@ namespace HackTeam1.WebApi.DocumentManagement
         {
             DocumentStorage.SaveFile(fileName, content);
         }
-
     }
 }

@@ -32,11 +32,12 @@ namespace HackTeam1.Core
             }
         }
 
-        public static string GetBase64File(string fileName, string extension)
+        public static string GetBase64File(string fileName, string extension = "")
         {
             var filePath = GetFilePath(fileName);
-            var aa = File.ReadAllBytes(filePath + extension);
-            return "data:image/tiff;base64," + Convert.ToBase64String(aa);
+            
+            var imageAsByteArray = File.ReadAllBytes(filePath + extension);
+            return "data:image/png;base64," + Convert.ToBase64String(imageAsByteArray);
         }
     }
 }
