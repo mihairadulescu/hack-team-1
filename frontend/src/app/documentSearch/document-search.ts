@@ -16,36 +16,35 @@ export class DocumentSearchPage {
   foundDocuments: Array<any>;
 
   constructor(private router: Router, private appHttpProxy: AppHttpProxy, private moment: MomentModule) {
+    this.doSearch("");
+  }
 
-    this.appHttpProxy.searchDocument("doc").subscribe(result => {
-       result.forEach(item => {
+
+
+  doSearch(searchText) {
+    this.appHttpProxy.searchDocument(searchText).subscribe(result => {
+      result.forEach(item => {
         item.CreatedDate = this.formatDate(item.CreatedDate);
-        item = this.updateHighlight(item, "");
+        item = this.updateHighlight(item, searchText);
       });
       this.foundDocuments = result;
     });
   }
 
-
-
-
-
   updateHighlight(item, searchText) {
+
+    item.HighlightedTitle = item.Title.replace(new RegExp('(' + searchText + ')', 'ig'),
+      '<span class=highlightedContent2>$1</span>');
+
     item.HighlightedText = item.Text.replace(new RegExp('(' + searchText + ')', 'ig'),
       '<span class=highlightedContent2>$1</span>');
+
     return item;
   }
 
 
   onSearch($event) {
-
-    this.appHttpProxy.searchDocument($event).subscribe(result => {
-      result.forEach(item => {
-        item.CreatedDate = this.formatDate(item.CreatedDate);
-        item = this.updateHighlight(item, $event);
-      });
-      this.foundDocuments = result;
-    });
+    this.doSearch($event);
   }
 
   navigateToDocumentUploadPage() {
