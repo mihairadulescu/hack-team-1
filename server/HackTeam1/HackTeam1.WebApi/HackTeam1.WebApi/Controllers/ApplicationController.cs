@@ -15,6 +15,7 @@ namespace HackTeam1.WebApi.Controllers
     [RoutePrefix("api")]
     public class ApplicationController : ApiController
     {
+        
         private readonly IElasticSearchEngine _elasticSearchEngine;
         private readonly IDocumentManagementSystem _documentManagementSystem;
 

@@ -38,7 +38,7 @@ namespace HackTeam1.SearchEngine
                 Query = new MultiMatchQuery()
                 {
                     Fields = new[] { textField, categoryField, origFileName, titleField },
-                    Fuzziness = Fuzziness.EditDistance(int.MaxValue),
+                    //Fuzziness = Fuzziness.EditDistance(2),
                     Query = searchPhrase
                 },
             };
