@@ -40,7 +40,7 @@
                     <h3 style="width: 50%">Content</h3>
 </div>
 
-<div class="row">
+<!--<div class="row">
     <div class="col-md-12">
         <div class="myJumbotron">
 
@@ -65,6 +65,31 @@
             <div *ngIf='selectedTab === "documentImage"'>
                 <img style="border: 1px solid #CACACA; margin: 0 auto; display: block; width: 100%;" [src]="currentDocument?.ImageContent">
 </div>
+
+
+</div>
+</div>
+</div>-->
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="myJumbotron jumbotron-responsive">
+            <br />
+            <br />
+
+            <div class="col-md-6">
+                <img style="border: 1px solid #CACACA; margin: 0 auto; display: block; width: 100%;" [src]="currentDocument?.ImageContent">
+</div>
+
+            <div class="col-md-6">
+                <textarea rows="20" class="form-control transition-height" autosize [(ngModel)]='documentText'></textarea>
+                <br />
+                <button (click)="saveDocumentChanges()" class="btn btn-success pull-right">Save</button>
+                <br />
+                <br />
+            </div>
+
+
 
 
 </div>
