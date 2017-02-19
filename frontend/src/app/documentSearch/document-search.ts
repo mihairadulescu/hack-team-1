@@ -18,8 +18,11 @@ export class DocumentSearchPage {
   constructor(private router: Router, private appHttpProxy: AppHttpProxy, private moment: MomentModule) {
 
     this.appHttpProxy.searchDocument("doc").subscribe(result => {
+       result.forEach(item => {
+        item.CreatedDate = this.formatDate(item.CreatedDate);
+        item = this.updateHighlight(item, "");
+      });
       this.foundDocuments = result;
-      this.foundDocuments.forEach(item => { item.CreatedDate = this.formatDate(item.CreatedDate); });
     });
   }
 
@@ -28,15 +31,8 @@ export class DocumentSearchPage {
 
 
   updateHighlight(item, searchText) {
-
-    if (searchText != undefined && searchText != "") {
-      item.HighlightedText = item.Text.replace(new RegExp('(' + searchText + ')', 'ig'),
-        '<span class=highlightedContent2>$1</span>');
-    }
-    else {
-      item.HighlightedText = item.Text;
-    }
-
+    item.HighlightedText = item.Text.replace(new RegExp('(' + searchText + ')', 'ig'),
+      '<span class=highlightedContent2>$1</span>');
     return item;
   }
 
@@ -44,14 +40,11 @@ export class DocumentSearchPage {
   onSearch($event) {
 
     this.appHttpProxy.searchDocument($event).subscribe(result => {
-
       result.forEach(item => {
         item.CreatedDate = this.formatDate(item.CreatedDate);
         item = this.updateHighlight(item, $event);
       });
-
       this.foundDocuments = result;
-
     });
   }
 

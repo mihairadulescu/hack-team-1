@@ -21,7 +21,7 @@ export class DocumentUploadPage {
   }
 
   onUploadSuccess($event){
-    console.log($event);
+
   }
 
     navigateToDocumentDetailsPage(item) {

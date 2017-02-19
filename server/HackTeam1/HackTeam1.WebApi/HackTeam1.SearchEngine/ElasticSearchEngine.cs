@@ -13,7 +13,7 @@ namespace HackTeam1.SearchEngine
 
         public ElasticSearchEngine(string defaultIndex = "document")
         {
-            var node = new Uri("http://localhost:9200");
+            var node = new Uri("http://102c2080.ngrok.io/");
             var settings = new ConnectionSettings(node).DefaultIndex(defaultIndex);
             _client = new ElasticClient(settings);
 
