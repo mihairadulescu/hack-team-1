@@ -36,7 +36,7 @@ namespace HackTeam1.Core
         {
             var filePath = GetFilePath(fileName);
             var aa = File.ReadAllBytes(filePath + extension);
-            return "data:image/png;base64," + Convert.ToBase64String(aa);
+            return "data:image/tiff;base64," + Convert.ToBase64String(aa);
         }
     }
 }

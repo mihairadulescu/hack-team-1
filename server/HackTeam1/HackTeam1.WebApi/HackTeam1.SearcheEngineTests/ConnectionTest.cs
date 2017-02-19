@@ -106,7 +106,7 @@ Many teams have already lost their most senior technical people, adding more wor
         [TestInitialize]
         public void Initilize()
         {
-            elastic = new ElasticSearchEngine("document_test");
+            elastic = new ElasticSearchEngine("document");
         }
 
         [TestMethod]
@@ -152,6 +152,13 @@ Many teams have already lost their most senior technical people, adding more wor
             var document = this.elastic.GetBy(doc.OriginalFileName);
 
             Assert.AreEqual(doc.Title, document.Title);
+        }
+
+        [TestMethod]
+        public void testShit()
+        {
+            var aaa = this.elastic.Search("certificat de garantie");
+            var bb = 5;
         }
     }
 }
