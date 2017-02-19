@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { RouterModule, Routes, Router } from '@angular/router';
 import { DropzoneModule } from 'angular2-dropzone-wrapper';
 import { DropzoneConfigInterface } from 'angular2-dropzone-wrapper';
 
@@ -11,7 +12,7 @@ import { DropzoneConfigInterface } from 'angular2-dropzone-wrapper';
 
 export class DocumentUploadPage {
 
-  constructor() {
+  constructor(private router: Router) {
 
   }
 
@@ -20,7 +21,10 @@ export class DocumentUploadPage {
   }
 
   onUploadSuccess($event){
-    console.log("uplaod success");
-     console.log($event);
+    console.log($event);
+  }
+
+    navigateToDocumentDetailsPage(item) {
+    this.router.navigate(['/details'], { queryParams: { fileName: item.OriginalFileName } });
   }
 }

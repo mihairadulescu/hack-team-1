@@ -35,7 +35,7 @@ export class DocumentSearchPage {
   }
 
   navigateToDocumentDetailsPage(item) {
-    this.router.navigate(['/details'], { queryParams: { fileName: item.Title } });
+    this.router.navigate(['/details'], { queryParams: { fileName: item.OriginalFileName } });
   }
 
 
