@@ -1,4 +1,5 @@
 using System;
+using System.Configuration;
 using System.IO;
 using System.Linq;
 using HackTeam1.Core;
@@ -13,7 +14,7 @@ namespace HackTeam1.WebApi.DocumentManagement
 
         public DocumentManagementSystem()
         {
-            ElasticSearchEngine = new ElasticSearchEngine();
+            ElasticSearchEngine = new ElasticSearchEngine(ConfigurationSettings.AppSettings["defaultIndex"]);
         }
 
         public Document UploadDocument(byte[] content, string fileName)

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -21,7 +22,7 @@ namespace HackTeam1.WebApi.Controllers
 
         public ApplicationController()
         {
-            _elasticSearchEngine = new ElasticSearchEngine();
+            _elasticSearchEngine = new ElasticSearchEngine(ConfigurationSettings.AppSettings["defaultIndex"]);
             _documentManagementSystem = new DocumentManagementSystem();
 
         }
@@ -68,15 +69,12 @@ namespace HackTeam1.WebApi.Controllers
                 }
                 catch (Exception e)
                 {
-
                     throw;
                 }
             }
 
             return Ok();
         }
-
-
 
 
         [HttpPost]
