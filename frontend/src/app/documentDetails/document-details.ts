@@ -14,6 +14,7 @@ export class DocumentDetailsPage {
   documentFileName;
   documentTitle;
   documentText;
+  documentCategory;
   selectedTab = "documentText";
   currentDocument: any;
 
@@ -28,17 +29,17 @@ export class DocumentDetailsPage {
             this.currentDocument = result;
             this.documentTitle = result.Title;
             this.documentText = result.Text;
+            this.documentCategory = result.Category;
           });
         }
       });
-
-
   }
 
 
   saveDocumentChanges() {
     this.currentDocument.Title = this.documentTitle;
     this.currentDocument.Text = this.documentText;
+    this.currentDocument.Category = this.documentCategory;
     this.appHttpProxy.updateDocument(this.currentDocument).subscribe();
   }
 

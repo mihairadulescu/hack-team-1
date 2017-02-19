@@ -14,9 +14,9 @@
     <div class="col-md-12">
         <div class="col-md-12">
             <div class="myJumbotron">
-                <h5><input type="text" [(ngModel)]="documentTitle"></h5>
-                <h5>Created in {{currentDocument?.CreatedDate}}</h5>
-                <h5>Category: {{currentDocument?.Category}}</h5>
+                <h5>Title: <input type="text" [(ngModel)]="documentTitle"></h5>
+                <h5>Created in {{currentDocument?.CreatedDate | date: 'dd/MM/yyyy'}}</h5>
+                <h5>Category: <input type="text" [(ngModel)]="documentCategory"></h5>            
                 <h5>Size: 1.2MB</h5>
                 <h5>Physical location: Archive</h5>
                 <br />
@@ -82,16 +82,12 @@
 </div>
 
             <div class="col-md-6">
-                <textarea rows="20" class="form-control transition-height" autosize [(ngModel)]='documentText'></textarea>
+                <textarea rows="26" class="form-control transition-height" autosize [(ngModel)]='documentText'></textarea>
                 <br />
                 <button (click)="saveDocumentChanges()" class="btn btn-success pull-right">Save</button>
                 <br />
                 <br />
             </div>
-
-
-
-
 </div>
 </div>
 </div>
