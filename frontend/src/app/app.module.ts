@@ -19,6 +19,7 @@ import { DropzoneModule } from 'angular2-dropzone-wrapper';
 import { DropzoneConfigInterface } from 'angular2-dropzone-wrapper';
 
 import { AppHttpProxy } from './services/app-http-proxy';
+import { MomentModule } from 'angular2-moment'
 
 const DROPZONE_CONFIG: DropzoneConfigInterface = {
   // Change this to your upload POST address: 
@@ -40,6 +41,7 @@ const DROPZONE_CONFIG: DropzoneConfigInterface = {
   imports: [
     DropzoneModule.forRoot(DROPZONE_CONFIG),
     BrowserModule,
+    MomentModule,
     FormsModule,
     ReactiveFormsModule,
     HttpModule,

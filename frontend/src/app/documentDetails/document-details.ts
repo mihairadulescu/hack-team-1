@@ -12,6 +12,8 @@ import { AppHttpProxy } from '../services/app-http-proxy'
 export class DocumentDetailsPage {
 
   documentFileName;
+  documentTitle;
+  documentText;
   selectedTab = "documentText";
   currentDocument: any;
 
@@ -24,6 +26,8 @@ export class DocumentDetailsPage {
         if (this.documentFileName) {
           this.appHttpProxy.getDocumentDetails(this.documentFileName).subscribe(result => {
             this.currentDocument = result;
+            this.documentTitle = result.Title;
+            this.documentText = result.Text;
           });
         }
       });
@@ -33,6 +37,8 @@ export class DocumentDetailsPage {
 
 
   saveDocumentChanges() {
+    this.currentDocument.Title = this.documentTitle;
+    this.currentDocument.Text = this.documentText;
     this.appHttpProxy.updateDocument(this.currentDocument).subscribe();
   }
 

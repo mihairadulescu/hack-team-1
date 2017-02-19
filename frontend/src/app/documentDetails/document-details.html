@@ -14,7 +14,7 @@
     <div class="col-md-12">
         <div class="col-md-12">
             <div class="myJumbotron">
-                <h5>{{currentDocument?.Title}}</h5>
+                <h5><input type="text" [(ngModel)]="documentTitle"></h5>
                 <h5>Created in {{currentDocument?.CreatedDate}}</h5>
                 <h5>Category: {{currentDocument?.Category}}</h5>
                 <h5>Size: 1.2MB</h5>
@@ -54,7 +54,7 @@
 
 
             <div *ngIf='selectedTab === "documentText"'>
-                <textarea rows="20" class="form-control transition-height" autosize>{{text}}</textarea>
+                <textarea rows="20" class="form-control transition-height" autosize [(ngModel)]='documentText'></textarea>
                 <br />
                 <button (click)="saveDocumentChanges()" class="btn btn-success pull-right">Save</button>
                 <br />
@@ -63,7 +63,7 @@
 
 
             <div *ngIf='selectedTab === "documentImage"'>
-                <img style="border: 1px solid #CACACA; margin: 0 auto; display: block;" src="http://nerdscomputing.com/wp-content/uploads/2016/12/laptop_png8913.jpg">
+                <img style="border: 1px solid #CACACA; margin: 0 auto; display: block;" [src]="currentDocument?.ImageContent">
 </div>
 
 
