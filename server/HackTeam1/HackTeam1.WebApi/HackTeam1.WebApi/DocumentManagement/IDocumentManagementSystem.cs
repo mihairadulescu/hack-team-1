@@ -9,5 +9,7 @@ namespace HackTeam1.WebApi.DocumentManagement
 
         // Indexes & updates document in storage
         Document UpdateDocument(Document document);
+
+        Document GetWithDetails(string fileName);
     }
 }

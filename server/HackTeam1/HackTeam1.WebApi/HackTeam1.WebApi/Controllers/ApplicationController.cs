@@ -7,61 +7,37 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using HackTeam1.Entities;
+using HackTeam1.SearchEngine;
+using HackTeam1.WebApi.DocumentManagement;
 
 namespace HackTeam1.WebApi.Controllers
 {
     [RoutePrefix("api")]
     public class ApplicationController : ApiController
     {
+        private readonly IElasticSearchEngine _elasticSearchEngine;
+        private readonly IDocumentManagementSystem _documentManagementSystem;
+
+        public ApplicationController()
+        {
+            _elasticSearchEngine = new ElasticSearchEngine();
+            _documentManagementSystem = new DocumentManagementSystem();
+
+        }
 
         [HttpGet]
         [Route("documentSearch/{searchPhrase?}")]
-        public List<Document> GetDocumentsBySearchPhrase(string searchPhrase)
+        public IHttpActionResult GetDocumentsBySearchPhrase(string searchPhrase = "")
         {
-            var result = new List<Document>();
-
-            result.Add(new Document()
-            {
-                Title = "Doc1",
-                Category = "Cat1",
-                CreatedDate = DateTime.Now,
-                Text = "text 1"
-            });
-
-            result.Add(new Document()
-            {
-                Title = "Doc2",
-                Category = "Cat2",
-                CreatedDate = DateTime.Now,
-                Text = "text 2"
-            });
-
-            result.Add(new Document()
-            {
-                Title = "Doc3",
-                Category = "Cat3",
-                CreatedDate = DateTime.Now,
-                Text = "text 3"
-            });
-
-            return result;
+            return this.Ok(_elasticSearchEngine.Search(searchPhrase).ToList());
         }
-
 
 
         [HttpGet]
         [Route("documentDetails/{fileName}")]
-        public Document GetDocumentDetails(string fileName)
+        public IHttpActionResult GetDocumentDetails(string fileName)
         {
-            var result = new Document()
-            {
-                Title = "Doc1 details",
-                Category = "Cat1 details",
-                CreatedDate = DateTime.Now,
-                Text = "text 1"
-            };
-
-            return result;
+            return this.Ok(_documentManagementSystem.GetWithDetails(fileName));
         }
 
 
@@ -70,7 +46,6 @@ namespace HackTeam1.WebApi.Controllers
         [Route("documentUpload")]
         public async Task<IHttpActionResult> UploadDocument()
         {
-            var finalDirectory = @"D:\NerdsHack";
             var currentDirectory = Path.GetTempPath();
 
             if (!Request.Content.IsMimeMultipartContent())
@@ -85,14 +60,16 @@ namespace HackTeam1.WebApi.Controllers
             {
                 var fileName = file.Headers.ContentDisposition.FileName.Trim().Replace("\"", "");
 
-                if (File.Exists(Path.Combine(finalDirectory, fileName)))
+                try
                 {
-                    File.Delete(Path.Combine(finalDirectory, fileName));
+                    var document = _documentManagementSystem.UploadDocument(File.ReadAllBytes(file.LocalFileName), fileName);
+                    return Ok(document);
                 }
-                    
-                File.Copy(file.LocalFileName, Path.Combine(finalDirectory, fileName));
+                catch (Exception e)
+                {
 
-                return Ok();
+                    throw;
+                }
             }
 
             return Ok();
@@ -105,7 +82,8 @@ namespace HackTeam1.WebApi.Controllers
         [Route("documentUpdate")]
         public IHttpActionResult UpdateDocument(Document document)
         {
-            return Ok();
+            var documentResponse =  this._documentManagementSystem.UpdateDocument(document);
+            return Ok(documentResponse);
         }
     }
 }

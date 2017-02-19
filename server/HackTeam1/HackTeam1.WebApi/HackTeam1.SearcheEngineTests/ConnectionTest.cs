@@ -106,7 +106,7 @@ Many teams have already lost their most senior technical people, adding more wor
         [TestInitialize]
         public void Initilize()
         {
-            elastic = new ElasticSearchEngine();
+            elastic = new ElasticSearchEngine("document_test");
         }
 
         [TestMethod]
@@ -129,6 +129,29 @@ Many teams have already lost their most senior technical people, adding more wor
             
             Assert.IsTrue(myData.Count() == 2);
             Assert.AreEqual(ObjectNr2.Title, myData.First().Title);
+        }
+
+
+        [TestMethod]
+        public void TestGetBy()
+        {
+            var doc = new Document
+            {
+                OriginalFileName = "powerpuff",
+                Title = "ma duc la piata",
+                OcrFileName = "nomNom",
+                Text = "my favourite text",
+                CreatedDate = DateTime.Now,
+                IndexedDate = DateTime.Now,
+                MimeType = "tiff",
+                Category = "Nebunie",
+            };
+
+            elastic.Index(doc);
+
+            var document = this.elastic.GetBy(doc.OriginalFileName);
+
+            Assert.AreEqual(doc.Title, document.Title);
         }
     }
 }

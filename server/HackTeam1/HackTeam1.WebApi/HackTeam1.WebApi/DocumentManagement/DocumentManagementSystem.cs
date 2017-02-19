@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using HackTeam1.Core;
 using HackTeam1.Entities;
 using HackTeam1.SearchEngine;
@@ -23,21 +24,34 @@ namespace HackTeam1.WebApi.DocumentManagement
 
             var document = new Document
             {
-                OriginalFileName = fileName,
+                OriginalFileName = Path.GetFileNameWithoutExtension(fileName),
                 MimeType = mimeType,
-                CreatedDate = DateTime.Now
+                Extension = Path.GetExtension(fileName),
+                CreatedDate = DateTime.Now,
+                IndexedDate = DateTime.Now
             };
 
-            SaveDocument(document);
-
             var ocr = new OcrSystem.DocumentOcr();
-            return ocr.PerformOcr(document);
+            var ocrizedDocument = ocr.PerformOcr(document);
+            
+            ElasticSearchEngine.Index(ocrizedDocument);
+
+            return ocrizedDocument;
         }
 
         public Document UpdateDocument(Document document)
         {
             this.ElasticSearchEngine.Index(document);
-            return SaveDocument(document);
+
+            return document;
+        }
+
+        public Document GetWithDetails(string fileName)
+        {
+            var document = this.ElasticSearchEngine.GetBy(fileName);
+            document.ImageContent = DocumentStorage.GetBase64File(fileName, document.Extension);
+
+            return document;
         }
 
         private static void SaveToStorage(byte[] content, string fileName)
@@ -45,11 +59,5 @@ namespace HackTeam1.WebApi.DocumentManagement
             DocumentStorage.SaveFile(fileName, content);
         }
 
-        private static Document SaveDocument(Document document)
-        {
-            var database = new DocumentDb();
-            database.SaveDocument(document);
-            return document;
-        }
     }
 }
